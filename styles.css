@@ -1,198 +1,454 @@
-/* charity: water Brand Colors & Fonts
-
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
-
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
-
-Fonts:
-- Proxima Nova
-- Avenir
-
+/* Beginner-friendly CSS with comments explaining each section
+   - This stylesheet uses charity: water's brand colors and typography
+   - We keep the code simple and well-documented for learning
+   - Built with accessibility and responsive design in mind
 */
 
-/* 
-  Charity: Water Landing Page Styles
-  This CSS uses the provided color palette and beginner-friendly styles.
+/* charity: water brand colors and typography:
+   - Yellow is our primary brand color (#FFC907)
+   - Blue for trust and water themes (#2E9DF7)
+   - Dark text for readability
 */
-
-/* Set up the main font and background color for the whole page */
-body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #222;
+:root {
+  --color-yellow: #FFC907;    /* charity: water yellow */
+  --color-blue: #2E9DF7;      /* charity: water blue */
+  --color-light-blue: #8BD1CB; /* secondary blue */
+  --color-text: #222222;      /* dark text for contrast */
+  --color-bg: #ffffff;        /* clean white background */
+  --max-width: 1200px;        /* slightly wider container */
+  --container-padding: 24px;
+  --radius: 6px;              /* subtle rounded corners */
+  --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* Add a slight shadow and rounded corners to each section for depth */
-section {
-  background: #fff; /* White background for sections */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
-  margin: 24px 10px; /* Space between sections */
-  padding: 24px 16px;
+/* Global resets and typography */
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; height:100%; background:var(--color-bg); color:var(--color-text); font-family:var(--font-sans); }
+p { line-height:1.6; margin:0 0 1.25rem 0; }
+
+/* Container for consistent content width */
+.container { 
+    max-width: var(--max-width); 
+    margin: 0 auto; 
+    padding: 0 var(--container-padding);
 }
 
-/* Hero Section Styles */
+/* Site header with logo */
+.site-header {
+    padding: 1.25rem 0;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+/* HERO SECTION
+   - Full-width background image with overlay
+   - Centered content using flexbox (simple to understand)
+   - Impactful typography for the main message
+*/
 .hero {
-  position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
-  color: #fff;                 /* White text for contrast */
-  text-align: center;          /* Center the text */
-  padding: 60px 20px;          /* Add space above and below */
-  border-radius: 0 0 16px 16px; /* Only round bottom corners */
-
-  /* Add a dark overlay for better text readability */
-  /* This uses a simple linear-gradient overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45); /* Blue overlay */
-}
-
-/* Make the headline bold and modern */
-.hero h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
-}
-
-/* Style the subheadline */
-.hero p {
-  font-size: 1.2em;
-  margin-top: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
-}
-
-/* Story Section Styles */
-.story {
-  background-color: #8BD1CB; /* Secondary Light Blue */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Add accent color to section headings */
-h2 {
-  color: #2E9DF7; /* Primary blue */
-  margin-top: 0;
-  font-weight: bold;
-}
-
-/* Call-to-Action Section Styles */
-.call-to-action {
-  background-color: #FFC907; /* Primary Yellow */
-  color: #222;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* Style the impact story image */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
-}
-
-/* Donate Button Styles */
-.donate-button {
-  display: inline-block;
-  background-color: #4FCB53; /* Green */
-  color: #fff;
-  padding: 14px 32px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-/* Change button color when hovered */
-.donate-button:hover {
-  background-color: #159A48; /* Dark Green */
-  transform: translateY(-2px) scale(1.04); /* Slight lift */
-}
-
-/* Add some spacing between sections */
-section {
-  margin-bottom: 20px;
-}
-
-/* 
-  Media Queries for Responsive Design
-  Media queries help make your website look good on different screen sizes,
-  like phones (small screens) and computers (large screens).
-*/
-
-/* This media query applies styles when the screen is 600px wide or less (like on most phones) */
-@media (max-width: 600px) {
-  /* Make hero section padding smaller on small screens */
-  .hero {
-    padding: 32px 8px;
-    font-size: 1em;
-  }
-
-  /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.4em;
-  }
-
-  /* Make subheadline font size smaller */
-  .hero p {
-    font-size: 1em;
-  }
-
-  /* Make story and call-to-action sections have less padding */
-  .story,
-  .call-to-action,
-  .donation-section {
-    padding: 14px 8px;
-  }
-
-  /* Make impact story image smaller and stack above the text */
-  .impact-content {
-    display: block; /* Stack items vertically */
+    position: relative;
+    background-image: url('img/6391_Ethiopia_2019_CG-.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 75vh; /* taller hero for impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-  }
-
-  .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
-  }
+    padding: 60px var(--container-padding);
+}
+.hero::after {
+    /* Dark overlay to make text readable */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5));
+    pointer-events: none;
 }
 
-/* This media query applies styles when the screen is wider than 600px (like on tablets and computers) */
-@media (min-width: 601px) {
-  /* Show image and text side by side in the impact story */
-  .impact-content {
-    display: flex;           /* Place items in a row */
-    align-items: center;     /* Vertically center items */
-    justify-content: center; /* Center the whole group */
-    gap: 28px;               /* Space between image and text */
-    text-align: left;
+.hero-inner {
+    position: relative; /* places content above overlay */
     max-width: 800px;
-    margin: 0 auto;
-  }
+    z-index: 1;    /* ensures content is above overlay */
+}
 
-  .impact-image {
-    width: 300px;
-  }
+.hero-title {
+    font-size: 3.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-sub {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+/* Button styles using charity: water colors */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--color-blue);
+    color: white;
+    border: none;
+}
+
+.btn-accent {
+    background: var(--color-yellow);
+    color: var(--color-text);
+    border: none;
+}
+
+/* Button hover effects */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Small focus styles for keyboard accessibility */
+.btn:focus{
+  outline: 3px solid rgba(10,165,162,0.25);
+  outline-offset: 2px;
+}
+.btn:focus:not(:focus-visible){ outline: none; }
+
+/* Impact statistics section */
+.impact {
+    padding: 80px 0;
+    background: var(--color-bg);
+}
+
+.impact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-text);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-blue);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
+/* Story section with image and text */
+.story {
+    padding: 80px 0;
+    background: var(--color-light-blue);
+}
+
+.story-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.story-image {
+    flex: 1;
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.story-content {
+    flex: 1;
+}
+
+/* Donation section */
+.donation {
+    text-align: center;
+    background: white;
+    padding: 80px 0;
+    margin: 40px 0;
+}
+
+.donation h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.donation p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.donation-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.donation-options .btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Utility classes */
+.muted { 
+    color: #666; 
+    font-size: 0.9rem; 
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 40px 0;
+    background: #f8f8f8;
+}
+
+.footer-logo {
+    max-width: 140px;
+    height: auto;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* Responsive design - Mobile First approach */
+
+/* Small phones (320px and up) */
+@media (min-width: 320px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero {
+        min-height: 50vh;
+        padding: 32px 16px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-sub {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .stats-grid {
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .story-flex {
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .story-image img {
+        max-height: 300px;
+    }
+    
+    .donation-options {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .impact, .story, .donation {
+        padding: 40px 0;
+    }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 24px;
+    }
+    
+    .hero {
+        min-height: 60vh;
+        padding: 60px 32px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-sub {
+        font-size: 1.1rem;
+    }
+    
+    .btn {
+        width: auto;
+        max-width: none;
+    }
+    
+    .stats-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    
+    .stat-item {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .story-flex {
+        flex-direction: row;
+        gap: 48px;
+        align-items: center;
+    }
+    
+    .story-image img {
+        max-height: 400px;
+    }
+    
+    .donation-options {
+        flex-direction: row;
+        gap: 24px;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    .impact, .story, .donation {
+        padding: 60px 0;
+    }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .hero {
+        min-height: 75vh;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-sub {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 3.5rem;
+    }
+    
+    .story-image img {
+        max-height: 500px;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    .impact, .story, .donation {
+        padding: 80px 0;
+    }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+    .container {
+        padding: 0 32px;
+    }
+    
+    .hero-inner {
+        max-width: 1000px;
+    }
+    
+    .stats-grid {
+        max-width: 1200px;
+    }
+}
+
+/* Accessibility: Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: more) {
+    .btn {
+        border: 2px solid currentColor;
+    }
+    .hero::after {
+        background: rgba(0,0,0,0.6);
+    }
+}
+
+/* Respect users who prefer reduced motion (remove fancy transitions) */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; animation: none !important; }
 }
